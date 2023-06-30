@@ -19,14 +19,22 @@ const boticord = new BoticordClient({
 
 // Get bot info || GET /bots/672406367344132116
 boticord.api.bots("672406367344132116").get()
-    .then((bot) => {
+    .then(async (bot) => {
         console.log(`${bot.name}'s ID is ${bot.id}. ${bot.name}'s description is ${bot.shortDescription}.`);
         
-        // Get owner info
-        boticord.api.users(bot.owner).get()
-            .then((owner) => {
-                console.log(`${bot.name}'s owner is ${(owner.discriminator == "0") ? `@${owner.username}` : `${owner.username}#${owner.discriminator}`} with site: ${owner.socials.custom}`);
-            });
+        // Get user info || GET /users/178404926869733376
+        function userCallback(user) {
+            console.log(`${bot.name}'s owner is ${(owner.discriminator == "0") ? `@${owner.username}` : `${owner.username}#${owner.discriminator}`} with site: ${owner.socials.custom}`);
+        }
+
+        // Very easily way (with async)
+        let userData = await boticord.api.users(bot.owner).get();
+
+        // You can also make requests by this way
+        let userData = await boticord.request("GET", `/users/${bot.owner}`, {});
+        
+        // Then push received data to your function if this needed
+        userCallback(userData);
     });
 
 // Update bot statistics || POST (with body) /bots/672406367344132116/stats
