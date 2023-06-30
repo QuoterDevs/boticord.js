@@ -6,11 +6,12 @@ const routeBuilder = require('./APIRouter');
 const packageData = require('../package.json');
 const errors = require('./errors');
 
+const baseAPI = "api.boticord.top";
 class BoticordClient {
     constructor(config) {
         this.config = config;
         if (!this.config.apiVersion) this.config.apiVersion = 3;
-        if (!this.config.dev) this.config.baseAPI = "api.boticord.top";
+        if (!this.config.baseAPI) this.config.baseAPI = baseAPI;
     }
 
     get api() {
@@ -21,7 +22,7 @@ class BoticordClient {
         const options = {
             method: method.toUpperCase(),
             hostname: this.config.baseAPI,
-            path: (this.config.dev) ? url : `/v${this.config.apiVersion}${url}`,
+            path: (this.config.baseAPI !== baseAPI) ? url : `/v${this.config.apiVersion}${url}`,
             headers: {
                 'Content-Type': 'application/json',
                 'User-Agent': `${packageData.name} (v${packageData.version})`
