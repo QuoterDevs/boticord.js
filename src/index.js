@@ -2,16 +2,15 @@
 
 const https = require('node:https');
 const routeBuilder = require('./APIRouter');
-const errors = require('./errors');
 
-const baseAPI = "api.boticord.top";
-const devBaseAPI = "api.arbuz.pro";
 const packageData = require('../package.json');
+const errors = require('./errors');
 
 class BoticordClient {
     constructor(config) {
         this.config = config;
-        if (!this.config.apiVersion) this.config.apiVersion = 2;
+        if (!this.config.apiVersion) this.config.apiVersion = 3;
+        if (!this.config.dev) this.config.baseAPI = "api.boticord.top";
     }
 
     get api() {
@@ -21,8 +20,8 @@ class BoticordClient {
     request(method, url, data) {
         const options = {
             method: method.toUpperCase(),
-            hostname: (this.config.apiVersion === 3 && this.config.dev) ? devBaseAPI : baseAPI,
-            path: (this.config.apiVersion === 3 && this.config.dev) ? url : `/v${this.config.apiVersion}${url}`,
+            hostname: this.config.baseAPI,
+            path: (this.config.dev) ? url : `/v${this.config.apiVersion}${url}`,
             headers: {
                 'Content-Type': 'application/json',
                 'User-Agent': `${packageData.name} (v${packageData.version})`
