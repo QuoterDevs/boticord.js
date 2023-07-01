@@ -1,6 +1,6 @@
 {
   "name": "boticord.js",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "An API wrapper for BotiCord API written in JS for JS/TS",
   "main": "src/index.js",
   "keywords": [
