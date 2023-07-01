@@ -28,7 +28,8 @@ const { BoticordClient } = require('boticord.js');
 const boticord = new BoticordClient({
     apiVersion: 3,
     token: "JWT_TOKEN_HERE",
-    baseAPI: "https://api.arbuz.pro", // You can also use another API URL
+    // You can also use another API URL by this
+    // baseAPI: "https://api.arbuz.pro",
 });
 
 // Making requests is very easily. Just open https://docs.boticord.top/ and choose your favorite endpoint
