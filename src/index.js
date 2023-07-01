@@ -40,9 +40,10 @@ class BoticordClient {
                         if (!final.result && !final.errors) return resolve(final);
 
                         if (final.errors) {
-                            let error = final.errors[0];
-                            error.humanizedMessage = errors[error.code];
-                            return resolve({ error });
+                            let data = { error: final.errors[0] };
+                            data.error.humanizedMessage = errors[error.code];
+                            if (final.result) data.result = final.result;
+                            return resolve(data);
                         }
 
                         if (final.result.length === 1) return resolve(final.result[0]);
