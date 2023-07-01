@@ -48,7 +48,8 @@ class BoticordClient {
 
                         if (final.result.length === 1) return resolve(final.result[0]);
                         return resolve(final.result);
-                    } catch (_) {
+                    } catch (err) {
+                        console.warn(err.stack);
                         return resolve({
                             error: {
                                 code: 666,
