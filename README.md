@@ -11,14 +11,14 @@
 
 # boticord.js
 
-An API wrapper for BotiCord API written in Javascript
+An API wrapper for BotiCord API written in JS for JS/TS
 
 ## Installation
 
 ```bash
 extdev@boticord.top:~$ npm install boticord.js
-extdev@boticord.top:~$ npm install github:boticord/boticord.js # alternative
-extdev@boticord.top:~$ git clone https://github.com/boticord/boticord.js # in the directory
+extdev@boticord.top:~$ npm install github:quoterdevs/boticord.js # alternative
+extdev@boticord.top:~$ git clone https://github.com/quoterdevs/boticord.js # in the directory
 ```
 
 ## Examples
