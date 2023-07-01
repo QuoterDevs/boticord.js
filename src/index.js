@@ -35,15 +35,27 @@ class BoticordClient {
                 let responseData = '';
                 res.on('data', (chunk) => (responseData += chunk));
                 res.on('end', () => {
-                    let final = JSON.parse(responseData);
-                    if (final.errors) {
-                        let error = final.errors[0];
-                        error.humanizedMessage = errors[error.code];
-                        return resolve({ error });
-                    }
+                    try {
+                        let final = JSON.parse(responseData);
+                        if (!final.result && !final.errors) return resolve(final);
 
-                    if (final.result.length === 1) return resolve(final.result[0]);
-                    return resolve(final.result);
+                        if (final.errors) {
+                            let error = final.errors[0];
+                            error.humanizedMessage = errors[error.code];
+                            return resolve({ error });
+                        }
+
+                        if (final.result.length === 1) return resolve(final.result[0]);
+                        return resolve(final.result);
+                    } catch (_) {
+                        return resolve({
+                            error: {
+                                code: 666,
+                                message: "UnparseableJSON",
+                                humanizedMessage: "BoticordClient class of boticord.js cannot parse JSON"
+                            }
+                        });
+                    }
                 });
             });
             req.on('error', reject);
