@@ -1,8 +1,27 @@
+<div align="center">
+<br />
+<p>
+    <a href="https://github.com/quoterdevs/boticord.js"><img src="https://cdn.discordapp.com/attachments/737026187037245541/879385729644523540/logo-banner-v1.svg"  alt="boticord.js"/></a>
+</p>
+<p>
+    <a href="https://www.npmjs.com/package/boticord.js"><img src="https://img.shields.io/npm/v/boticord.js.svg?maxAge=3600" alt="NPM version" /></a>
+    <a href="https://www.npmjs.com/package/boticord.js"><img src="https://img.shields.io/npm/dt/boticord.js.svg?maxAge=3600" alt="NPM downloads" /></a>
+</p>
+</div>
+
 # boticord.js
 
 An API wrapper for BotiCord API written in Javascript
 
-## Usage
+## Installation
+
+```bash
+extdev@boticord.top:~$ npm install boticord.js
+extdev@boticord.top:~$ npm install github:boticord/boticord.js # alternative
+extdev@boticord.top:~$ git clone https://github.com/boticord/boticord.js # in the directory
+```
+
+## Examples
 
 ```js
 const { BoticordClient } = require('boticord.js');
@@ -40,18 +59,12 @@ boticord.api.bots("672406367344132116").get()
 // Update bot statistics || POST (with body) /bots/672406367344132116/stats
 boticord.api.bots("672406367344132116").stats.post({ members: 15000, guilds: 3000, shards: 2 })
     .then(() => console.log('Bot statistic has been updated on BotiCord!'));
-
-// Use the adapters for automatic update bot statistics
-const { DdooAdapter } = require('boticord.js'); // You can also use Discord.js adapter by DjsAdapter class
-const client = {}; // Discordoo client
-
-const adapter = new DdooAdapter(client);
-boticord.autoPost(adapter)
-    .then(success => {
-        if (success) console.log('autopost started successfully!');
-        else console.log('autopost already running');
-    })
-    .catch(error => {
-        console.log('whoops, some error occurred!', error);
-    });
 ```
+
+## Additional information
+
+You can get support [here](https://discord.gg/GQF3ANKFuw) or on [BotiCord support server](https://discord.gg/hkHjW8a) via **@4uuzbroo**/**@cipherka** mention
+
+## Contributing
+
+Feel free to create a PR. In your changes you must describe what would you like to change.

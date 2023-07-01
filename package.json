@@ -1,8 +1,28 @@
 {
   "name": "boticord.js",
   "version": "3.0.0",
-  "description": "An API wrapper for BotiCord API written in Javascript",
+  "description": "An API wrapper for BotiCord API written in JS for JS/TS",
   "main": "src/index.js",
-  "author": "cipherka, tripenfox",
-  "license": "MIT"
+  "keywords": [
+    "boticord",
+    "js",
+    "javascript",
+    "discord"
+  ],
+  "author": {
+    "name": "quoterdevs",
+    "url": "https://github.com/quoterdevs"
+  },
+  "homepage": "https://github.com/quoterdevs/boticord.js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quoterdevs/boticord.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/quoterdevs/boticord.js/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.6"
+  }
 }
